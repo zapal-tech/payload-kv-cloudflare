@@ -39,7 +39,7 @@
   ],
   "scripts": {
     "build": "pnpm run build:types && pnpm run build:swc",
-    "build:swc": "swc ./src -d ./dist --config-file .swcrc-build --strip-leading-paths",
+    "build:swc": "swc ./src -d ./dist --strip-leading-paths",
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "check-updates": "pnpx taze major -r -l",
     "clean": "rimraf {dist,*.tsbuildinfo,.swcrc-build}",
