@@ -1,6 +1,6 @@
 {
   "name": "@zapal/payload-kv-cloudflare",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": false,
   "description": "Payload CMS Cloudflare KV Adapter",
   "keywords": [
