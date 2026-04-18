@@ -1,0 +1,83 @@
+{
+  "name": "@zapal/payload-kv-cloudflare",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Payload CMS Cloudflare KV Adapter",
+  "keywords": [
+    "payload",
+    "cms",
+    "cloudflare",
+    "kv",
+    "adapter",
+    "zapal",
+    "zapal-tech"
+  ],
+  "bugs": {
+    "url": "https://github.com/zapal-tech/payload-kv-cloudflare/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zapal-tech/payload-kv-cloudflare.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Zapal",
+    "email": "hello@zapal.tech",
+    "url": "https://zapal.tech"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm run build:types && pnpm run build:swc",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc-build --strip-leading-paths",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "check-updates": "pnpx taze major -r -l",
+    "clean": "rimraf {dist,*.tsbuildinfo,.swcrc-build}",
+    "lint": "pnpm run lint:ts && pnpm run lint:eslint",
+    "lint:eslint": "eslint . --ignore-pattern='dist/'",
+    "lint:ts": "tsc",
+    "prepare": "husky",
+    "prepublishOnly": "pnpm run clean && pnpm run build",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx,js,json,json5,html,gql,graphql,md,css,scss}\"",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "20.5.0",
+    "@commitlint/config-conventional": "20.5.0",
+    "@ianvs/prettier-plugin-sort-imports": "4.7.1",
+    "@swc/cli": "0.8.1",
+    "@swc/core": "1.15.26",
+    "@zapal/dx": "^1.4.0",
+    "eslint": "9.39.1",
+    "husky": "9.1.7",
+    "lint-staged": "16.4.0",
+    "payload": "3.83.0",
+    "prettier": "3.8.3",
+    "prettier-plugin-packagejson": "3.0.2",
+    "rimraf": "6.1.3",
+    "typescript": "5.9.3",
+    "vitest": "^4.1.4",
+    "wrangler": "4.83.0"
+  },
+  "peerDependencies": {
+    "payload": "^3.62.0"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
