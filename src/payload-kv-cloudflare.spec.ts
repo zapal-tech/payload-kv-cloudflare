@@ -1,10 +1,10 @@
 import type { BasePayload, KVAdapter } from 'payload'
 import { beforeEach, describe, expect, it, vi, type Mock } from 'vitest'
 
-import { cloudflareKVAdapter, type MinimalKVNamespace } from './index'
+import { cloudflareKVAdapter, type KVNamespace } from './index'
 
 describe('CloudflareKVAdapter', () => {
-  let mockKV: Record<keyof MinimalKVNamespace, Mock>
+  let mockKV: Record<keyof KVNamespace, Mock>
   let adapterInit: (args: { payload: BasePayload }) => KVAdapter
   let adapter: KVAdapter & { keyPrefix?: string }
 
@@ -17,7 +17,7 @@ describe('CloudflareKVAdapter', () => {
     }
 
     const result = cloudflareKVAdapter({
-      kv: mockKV as unknown as MinimalKVNamespace,
+      kv: mockKV as unknown as KVNamespace,
       keyPrefix: 'test-prefix:',
     })
 
